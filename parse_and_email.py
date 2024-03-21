@@ -26,7 +26,7 @@ def analyze_samples(input_file):
     for origin, counts in origins.items():
         if counts['total'] > 0:
             failed_pct = (counts['failed'] / counts['total']) * 100
-            if failed_pct > 5:
+            if failed_pct > 10 :
                 send_email(origin, failed_pct, counts['failed_samples'])  # Pass failed samples to the email function
 
 def send_email(origin, failed_pct, failed_samples):
@@ -44,7 +44,7 @@ def send_email(origin, failed_pct, failed_samples):
     msg['Subject'] = f"Sample Quality Alert for Origin {origin}"
     
     # Construct the email body with failed samples listed
-    body = f"Attention: Over 5% of samples from origin {origin} have failed the quality check. ({failed_pct:.2f}% failed)\n\nID of failed samples:\n" + "\n".join(failed_samples)
+    body = f"Attention: Over 10% of samples from origin {origin} have failed the quality check. ({failed_pct:.2f}% failed)\n\nID of failed samples:\n" + "\n".join(failed_samples)
     msg.attach(MIMEText(body, 'plain'))
     print("EMAIL:",smtp_user, email_to, f"Sample Quality Alert for Origin {origin}", body, "\n" )   
  
