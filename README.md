@@ -11,7 +11,9 @@ environment.yml
 
 Scripts:
 find_file.py - script to identify new input
+
 parse_and_email.py - script to process new input, and send emails
+
 run_find_file_weekly.sh - batch script to run script find_file.py weekly
 
 To get started, do:
